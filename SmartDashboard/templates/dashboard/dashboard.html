@@ -18,26 +18,28 @@
 
 
 
-<div class="row">
+<div class="row justify-content-center">
 
-  <div class="col-lg">
+  <div class="col">
 
     <!-- Default Card Example -->
-    <div class="card mb-4">
+    <div class="card mb-4 shadow">
       <div class="card-header">
-        Devices
+        <h2>Lights</h1>
       </div>
       <div class="card-body">
         {% for device in devices %}
             <div class="row">
               <div class="col">
                 
-                <h3>{{ device.name }}</h3>
+                <h3 >{{ device.name }}</h3>
                 <h5>{{ device.light_type }}</h5>
                 
                 {% if device.power_status == True %}
+                <i class="bi bi-lightbulb"></i>
                 <h3>On</h3>
                 {% else %}
+                <i class="bi bi-lightbulb-off"></i>
                 <h3>Off</h3>
                 {% endif %}
                 
@@ -72,6 +74,8 @@
     
 
   </div>
+
+  
 
 </div>
 

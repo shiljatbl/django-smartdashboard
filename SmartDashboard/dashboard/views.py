@@ -24,10 +24,16 @@ def toogle_light(request, id):
     bulb.toggle()
     #bulb.turn_off()
 
-    if active_bulb.power_status == False:
-        active_bulb.power_status = True
+    
+    status_check = bulb.get_properties()['power']
+    if status_check == "off":
+        active_bulb.power_status = False
     else:
-       active_bulb.power_status = False
+        active_bulb.power_status = True
+    
+    
+    print(status_check)
+    
 
     active_bulb.save()
     return redirect('/')
