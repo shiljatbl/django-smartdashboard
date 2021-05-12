@@ -1,0 +1,71 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block title %}Hi bootstrap{% endblock title %}
+
+
+
+{% block styles %}
+
+
+{% endblock styles%}
+
+{% block heading %}Smart Devices Dashboard {% endblock heading %}
+
+{% block body %}
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/switch.css'%}">
+
+
+<div class="row">
+
+  <div class="col-lg">
+
+    <!-- Default Card Example -->
+    <div class="card mb-4">
+      <div class="card-header">
+        Devices
+      </div>
+      <div class="card-body">
+        {% for device in devices %}
+            <div class="row">
+              <div class="col">
+                
+                <h3>{{ device.name }}</h3>
+                <h5>{{ device.light_type }}</h5>
+                
+                <h3>{{ device.power_status }}</h3>
+                
+              </div>
+
+              <div class="col">
+                
+                
+               
+                
+                <form method="post" action="{% url 'toggle-power' device.id%}">
+                  {% csrf_token %}
+                  <button class="btn btn-primary btn-block btn-round">Power</button>
+              </form>
+
+                
+                
+              </div>
+
+              
+            </div>
+            <hr>
+            
+        {% endfor %}
+      </div>
+    </div>
+
+    
+
+  </div>
+
+</div>
+
+{% endblock body %}
+
