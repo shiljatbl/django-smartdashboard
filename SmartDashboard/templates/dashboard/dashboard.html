@@ -1,7 +1,7 @@
 {% extends 'layout/base.html' %}
 {% load static %}
 
-{% block title %}Hi bootstrap{% endblock title %}
+{% block title %}Smart Hub 1.0{% endblock title %}
 
 
 
@@ -14,8 +14,8 @@
 
 {% block body %}
 
+<link rel="stylesheet" type="text/css" href="static/css/switch.css">
 
-<link rel="stylesheet" type="text/css" href="{% static 'css/switch.css'%}">
 
 
 <div class="row">
@@ -35,7 +35,12 @@
                 <h3>{{ device.name }}</h3>
                 <h5>{{ device.light_type }}</h5>
                 
-                <h3>{{ device.power_status }}</h3>
+                {% if device.power_status == True %}
+                <h3>On</h3>
+                {% else %}
+                <h3>Off</h3>
+                {% endif %}
+                
                 
               </div>
 
@@ -47,7 +52,10 @@
                 <form method="post" action="{% url 'toggle-power' device.id%}">
                   {% csrf_token %}
                   <button class="btn btn-primary btn-block btn-round">Power</button>
-              </form>
+
+                  
+
+                </form>
 
                 
                 
@@ -66,6 +74,8 @@
   </div>
 
 </div>
+
+
 
 {% endblock body %}
 

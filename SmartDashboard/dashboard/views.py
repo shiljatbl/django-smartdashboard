@@ -21,14 +21,13 @@ def toogle_light(request, id):
     
 
     bulb = Bulb(active_bulb.ip_address)
-    bulb.turn_off()
-    time.sleep(1)
-    bulb.turn_on()
+    bulb.toggle()
+    #bulb.turn_off()
 
     if active_bulb.power_status == False:
         active_bulb.power_status = True
     else:
-        active_bulb.power_status = False
+       active_bulb.power_status = False
 
     active_bulb.save()
     return redirect('/')
