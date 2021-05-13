@@ -21,6 +21,8 @@ from dashboard import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name="home"),
-   path('toggle/<int:id>', views.toogle_light, name="toggle-power")
+    path('toggle/<int:id>', views.toogle_light, name="toggle-power"),
+    path('change_red/<int:id>', views.set_red, name="red"),
+    path('change_blue/<int:id>', views.set_blue, name="blue")
     
 ]

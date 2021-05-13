@@ -59,6 +59,22 @@
 
                 </form>
 
+                <form method="post" action="{% url 'red' device.id%}">
+                  {% csrf_token %}
+                  <button class="btn btn-danger btn-block btn-round">Red</button>
+
+                  
+
+                </form>
+
+                <form method="post" action="{% url 'blue' device.id%}">
+                  {% csrf_token %}
+                  <button class="btn btn-primary btn-block btn-round">Blue</button>
+
+                  
+
+                </form>
+
                 
                 
               </div>
