@@ -11,7 +11,7 @@ class Device(models.Model):
         return self.name
 
 
-class Device_LED_Strip(models.Model):
+class DeviceLEDStrip(models.Model):
     name = models.CharField(max_length=255)
     ip_address = models.CharField(max_length=255)
     power_status = models.BooleanField(default=False)

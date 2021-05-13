@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 import requests
-from .models import Device
+from .models import Device, DeviceLEDStrip
 from yeelight import Bulb
 from django.urls import reverse
 from django.http import HttpResponse
 import time
+import magichue
+
 #import requests
 
 # Create your views here.
@@ -13,10 +15,11 @@ import time
 def index(request):
     devices = Device.objects.all()
     
+    devices_strip = DeviceLEDStrip.objects.all()
 
         
 
-    return render(request, 'dashboard/dashboard.html', {'devices': devices})
+    return render(request, 'dashboard/dashboard.html', {'devices': devices, 'devices_strip': devices_strip})
 
 
 
@@ -88,5 +91,27 @@ def set_blue(request, id):
     print(status_check)
     
 
+    active_bulb.save()
+    return redirect('/')
+
+
+
+def toogle_strip(request, id):
+    
+    active_bulb = DeviceLEDStrip.objects.get(id= id)
+    
+
+    light = magichue.Light(active_bulb.ip_address)
+    
+    if light.on == True:
+        light.on = False
+    else:
+        light.on = True
+    
+
+    
+    active_bulb.power_status = light.on
+    
+    
     active_bulb.save()
     return redirect('/')

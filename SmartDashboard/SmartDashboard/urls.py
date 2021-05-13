@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name="home"),
     path('toggle/<int:id>', views.toogle_light, name="toggle-power"),
+    path('togglestrip/<int:id>', views.toogle_strip, name="toggle-power-strip"),
     path('change_red/<int:id>', views.set_red, name="red"),
     path('change_blue/<int:id>', views.set_blue, name="blue")
     

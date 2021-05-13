@@ -91,7 +91,76 @@
 
   </div>
 
-  
+  <div class="col">
+
+    <!-- Default Card Example -->
+    <div class="card mb-4 shadow">
+      <div class="card-header">
+        <h2>LED Strips</h1>
+      </div>
+      <div class="card-body">
+        {% for device in devices_strip %}
+            <div class="row">
+              <div class="col">
+                
+                <h3 >{{ device.name }}</h3>
+                <h5>{{ device.light_type }}</h5>
+                
+                {% if device.power_status == True %}
+                <i class="bi bi-lightbulb"></i>
+                <h3>On</h3>
+                {% else %}
+                <i class="bi bi-lightbulb-off"></i>
+                <h3>Off</h3>
+                {% endif %}
+                
+                
+              </div>
+
+              <div class="col">
+                
+                
+               
+                
+                <form method="post" action="{% url 'toggle-power-strip' device.id%}">
+                  {% csrf_token %}
+                  <button class="btn btn-primary btn-block btn-round">Power</button>
+
+                  
+
+                </form>
+
+                <form method="post" action="{% url 'red' device.id%}">
+                  {% csrf_token %}
+                  <button class="btn btn-danger btn-block btn-round">Red</button>
+
+                  
+
+                </form>
+
+                <form method="post" action="{% url 'blue' device.id%}">
+                  {% csrf_token %}
+                  <button class="btn btn-primary btn-block btn-round">Blue</button>
+
+                  
+
+                </form>
+
+                
+                
+              </div>
+
+              
+            </div>
+            <hr>
+            
+        {% endfor %}
+      </div>
+    </div>
+
+    
+
+  </div>
 
 </div>
 
