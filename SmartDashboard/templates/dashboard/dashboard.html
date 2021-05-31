@@ -33,14 +33,16 @@
               <div class="col">
                 
                 <h3 >{{ device.name }}</h3>
-                <h5>{{ device.light_type }}</h5>
+                <h6>{{ device.light_type }}</h6>
                 
                 {% if device.power_status == True %}
-                <i class="bi bi-lightbulb"></i>
+                
                 <h3>On</h3>
+                
                 {% else %}
-                <i class="bi bi-lightbulb-off"></i>
+                
                 <h3>Off</h3>
+                
                 {% endif %}
                 
                 
@@ -50,6 +52,8 @@
                 
                 
                
+                
+
                 
                 <form method="post" action="{% url 'toggle-power' device.id%}">
                   {% csrf_token %}
@@ -74,7 +78,7 @@
                   
 
                 </form>
-
+                
                 
                 
               </div>
@@ -104,7 +108,7 @@
               <div class="col">
                 
                 <h3 >{{ device.name }}</h3>
-                <h5>{{ device.light_type }}</h5>
+                <h6>{{ device.light_type }}</h6>
                 
                 {% if device.power_status == True %}
                 <i class="bi bi-lightbulb"></i>

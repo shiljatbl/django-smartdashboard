@@ -13,6 +13,12 @@ import magichue
 
 
 def index(request):
+    
+        
+
+    return render(request, 'index/index.html', {})
+
+def devices(request):
     devices = Device.objects.all()
     
     devices_strip = DeviceLEDStrip.objects.all()
@@ -20,6 +26,13 @@ def index(request):
         
 
     return render(request, 'dashboard/dashboard.html', {'devices': devices, 'devices_strip': devices_strip})
+
+def assistant(request):
+    
+
+        
+
+    return render(request, 'assistant/assistant.html', {})
 
 
 
@@ -45,7 +58,7 @@ def toogle_light(request, id):
     
 
     active_bulb.save()
-    return redirect('/')
+    return redirect('/devices')
 
 
 def set_red(request, id):
